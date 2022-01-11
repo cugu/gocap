@@ -1,9 +1,13 @@
 # A take on supply chain security in Go
 
-List your dependencies capabilities and monitor if updates require more 
-capabilities.
+List your dependencies capabilities and monitor if dependency updates require more capabilities.
 
 ## The Problem
+
+Recently different [attacks](https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610) and
+[other](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/)
+[issues](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228)
+related to open-source dependencies highlighted a quite severe problem with dependencies:
 
 > Every imported package gives that package's author basically remote code
 > execution for your software.
