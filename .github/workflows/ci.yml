@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ macos-latest, ubuntu-latest ] # windows-latest, 
+        os: [ macos-latest, ubuntu-latest ] # windows-latest,
     steps:
       - name: Setup go 1.17
         uses: actions/setup-go@v2
@@ -22,9 +22,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Download dependencies
         run: go mod download
+      - name: Install
+        run: go install .
 
-      - name: Capabilities
-        run: go run . check .
+      - name: Check Capabilities
+        run: gocap check .
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2

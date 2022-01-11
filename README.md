@@ -44,7 +44,7 @@ attack surface besides stealing your CPU cycles.
 
 Implementing the approach above would require changes to Go itself. So I came up with another, simpler approach: GoCap.
 GoCap can check and validate the source code of dependencies for their capabilities and is ment to be included into the
-testing phase of the build process. This way GoCap can to at least pin the capabilities of dependencies.
+testing phase of the build process. This way GoCap can at least pin the capabilities of dependencies.
 
 GoCap provides simple capability checking for Go using a `go.cap` file. The
 `go.cap` files lists all package dependencies that require critical permissions like file access, execution rights or
@@ -58,6 +58,14 @@ github.com/cugu/gocap (execute, file)
 
 github.com/alecthomas/kong (file, syscall)
 github.com/pkg/errors (runtime)
+```
+
+### Install GoCap
+
+You can [download a release](https://github.com/cugu/gocap/releases) or run
+
+```shell
+go install github.com/cugu/gocap@v0.1.0
 ```
 
 ### gocap generate
@@ -84,6 +92,7 @@ github.com/pkg/errors (runtime)
 
 `gocap check <path>` compares a local `go.cap` file with the actual required capabilities by dependency packages. Any
 missmatch results in a non-zero exit code, so you can use GoCap check in your CI pipelines.
+See [ci.yml](https://github.com/cugu/gocap/blob/main/.github/workflows/ci.yml#L28) for a working example.
 
 *Example*
 
