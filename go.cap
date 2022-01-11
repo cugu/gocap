@@ -1,0 +1,4 @@
+github.com/cugu/gocap (execute, file)
+
+github.com/alecthomas/kong (file, syscall)
+github.com/pkg/errors (runtime)
