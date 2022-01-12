@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"regexp"
 	"sort"
 )
 
@@ -22,7 +23,6 @@ func (e *PackageNotProvided) Error() string {
 	return fmt.Sprintf("package '%s' not listed in go.cap file, please add to go.cap file", e.Package)
 }
 
-
 type UnnecessaryCapability struct {
 	Capability string
 }
@@ -39,7 +39,7 @@ func (e *CapabilityNotProvided) Error() string {
 	return fmt.Sprintf("capability '%s' not provided by go.cap file, add to go.cap file if you want to grant the capability", e.Capability)
 }
 
-func checkCmd(path string) {
+func checkCmd(path string, ignore string) {
 	file, err := parseGoCap(path)
 	if err != nil {
 		fmt.Println(err)
@@ -50,6 +50,11 @@ func checkCmd(path string) {
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
+	}
+
+	if ignore != "" {
+		filterTree(tree, ignore)
+		file.External = filterFile(file, ignore)
 	}
 
 	packageErrors := check(tree, file)
@@ -72,6 +77,32 @@ func checkCmd(path string) {
 		}
 		os.Exit(1)
 	}
+}
+
+func filterTree(tree *Tree, ignore string) {
+	for name := range tree.nodes {
+		match, err := regexp.MatchString(ignore, name)
+		if err != nil {
+			continue
+		}
+		if match {
+			delete(tree.nodes, name)
+		}
+	}
+}
+
+func filterFile(file *File, ignore string) []Line {
+	var external []Line
+	for _, line := range file.External {
+		match, err := regexp.MatchString(ignore, line.Package)
+		if err != nil {
+			continue
+		}
+		if !match {
+			external = append(external, line)
+		}
+	}
+	return external
 }
 
 func sortedPackageErrorKeys(m map[string][]error) (keys []string) {
