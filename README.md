@@ -1,4 +1,4 @@
-# A take on supply chain security in Go
+# A take on dependency security in Go
 
 List your dependencies capabilities and monitor if dependency updates require more capabilities.
 
