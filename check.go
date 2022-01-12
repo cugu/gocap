@@ -40,7 +40,7 @@ func (e *CapabilityNotProvided) Error() string {
 }
 
 func checkCmd(path string) {
-	file, err := parseGoCap()
+	file, err := parseGoCap(path)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
