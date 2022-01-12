@@ -10,6 +10,8 @@ var permissionMap = map[string][]string{
 	"os/exec":   {"execute"},
 	"syscall":   {"syscall"},
 	"runtime":   {"runtime"},
+	"reflect":   {"execute"},
+	"unsafe":    {"syscall"},
 }
 
 func toCapabilities(dependencies []string) []string {

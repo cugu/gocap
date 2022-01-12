@@ -73,7 +73,8 @@ go install github.com/cugu/gocap@v0.1.0
 `gocap generate <path>` prints a valid `go.cap` file. It lists all dependency packages that require critical permissions
 like file access, execution rights or network access.
 
-**! `gocap generate` runs on package basis and the path argument must point to a Go package (there must be .go files) not a Go Module. Also `gocap generate` needs the dependenies downloaded before, e.g. run `go mod download`**.
+**! `gocap generate` runs on package basis and the path argument must point to a Go package (there must be .go files)
+not a Go Module. Also `gocap generate` needs the dependenies downloaded before, e.g. run `go mod download`**.
 
 *Example*
 
@@ -112,3 +113,14 @@ github.com/alecthomas/kong
 github.com/pkg/errors
 	unnecessary capability 'network', please remove from go.cap file
 ``` 
+
+## Capabilities
+
+| Name    | Description                                                                                                                         | Packages           |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| file    | Read and write access to files                                                                                                      | os io/ioutil       |
+| network | Read and write to the network                                                                                                       | net net/http       |
+| execute | Execute other binaries                                                                                                              | os/exec reflect    |
+| runtime | Access system information                                                                                                           | runtime            |
+| syscall | Perform any system call in context of the software. Unsafe might indicate a //go:linkname and login of external C or assembler code | syscall, C, unsafe |
+
