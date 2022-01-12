@@ -73,10 +73,14 @@ go install github.com/cugu/gocap@v0.1.0
 `gocap generate <path>` prints a valid `go.cap` file. It lists all dependency packages that require critical permissions
 like file access, execution rights or network access.
 
+**! `gocap generate` runs on package basis and the path argument must point to a Go package (there must be .go files) not a Go Module. Also `gocap generate` needs the dependenies downloaded before, e.g. run `go mod download`**.
+
 *Example*
 
 ```shell
-gocap generate github.com/cugu/gocap > go.cap
+cd ~/myProjects/gocap
+go mod download
+gocap generate . > go.cap
 ```
 
 *go.cap*
