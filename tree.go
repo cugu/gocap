@@ -103,5 +103,6 @@ func sortedKeys(m map[string]*Node) (keys []string) {
 }
 
 func goCapLine(name string, capabilities []string) string {
+	sort.Strings(capabilities)
 	return fmt.Sprintf("%s (%s)\n", name, strings.Join(capabilities, ", "))
 }
