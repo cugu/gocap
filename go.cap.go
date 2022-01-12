@@ -44,11 +44,11 @@ var parser = participle.MustBuild(&File{},
 	participle.UseLookahead(2),
 )
 
-func parseGoCap() (*File, error) {
+func parseGoCap(path string) (*File, error) {
 	r, err := os.Open("go.cap")
 	if err != nil {
 		if errors.Is(err, fs.ErrNotExist) {
-			return nil, errors.New("go.cap file does not exist")
+			return nil, fmt.Errorf("go.cap file does not exist, consider run `gocap generate %s> go.cap` command", path)
 		}
 		return nil, fmt.Errorf("could not open go.cap file: %s", err)
 	}
