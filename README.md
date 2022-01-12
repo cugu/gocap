@@ -116,11 +116,11 @@ github.com/pkg/errors
 
 ## Capabilities
 
-| Name    | Description                                                                                                                         | Packages           |
-|---------|-------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| file    | Read and write access to files                                                                                                      | os io/ioutil       |
-| network | Read and write to the network                                                                                                       | net net/http       |
-| execute | Execute other binaries                                                                                                              | os/exec reflect    |
-| runtime | Access system information                                                                                                           | runtime            |
-| syscall | Perform any system call in context of the software. Unsafe might indicate a //go:linkname and login of external C or assembler code | syscall, C, unsafe |
-
+| Name    | Description                                                                                                                         | Packages     |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| file    | Read and write access to files                                                                                                      | os io/ioutil |
+| network | Read and write to the network                                                                                                       | net net/http |
+| execute | Execute other binaries                                                                                                              | os/exec      |
+| syscall | Perform any system call in context of the software                                                                                  | syscall, C   |
+| unsafe  | Usage of the unsafe package in combination with a //go:linkname compiler directive can be used to load external C or assembler code | unsafe       |
+| reflect | reflect.NewAt in combination with reflect#Value.Call might be used call arbitrary functions                                         | reflect      |

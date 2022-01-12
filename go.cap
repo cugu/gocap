@@ -1,4 +1,4 @@
 github.com/cugu/gocap (execute, file)
 
-github.com/alecthomas/kong (file, syscall)
-github.com/pkg/errors (runtime)
+github.com/alecthomas/kong (file, syscall, reflect, unsafe)
+github.com/alecthomas/participle/v2 (reflect)
