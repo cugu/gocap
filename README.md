@@ -74,7 +74,7 @@ go install github.com/cugu/gocap@v0.1.0
 like file access, execution rights or network access.
 
 **! `gocap generate` runs on package basis and the path argument must point to a Go package (there must be .go files)
-not a Go Module. Also `gocap generate` needs the dependenies downloaded before, e.g. run `go mod download`**.
+not a Go Module. Also `gocap generate` needs the dependencies downloaded before, e.g. run `go mod download`**.
 
 *Example*
 
@@ -96,7 +96,7 @@ github.com/pkg/errors (runtime)
 ### gocap check
 
 `gocap check <path>` compares a local `go.cap` file with the actual required capabilities by dependency packages. Any
-missmatch results in a non-zero exit code, so you can use GoCap check in your CI pipelines.
+mismatch results in a non-zero exit code, so you can use GoCap check in your CI pipelines.
 See [ci.yml](https://github.com/cugu/gocap/blob/main/.github/workflows/ci.yml#L28) for a working example.
 
 *Example*
