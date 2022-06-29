@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/alecthomas/kong v0.6.1
 	github.com/alecthomas/participle/v2 v2.0.0-alpha7
-	github.com/stretchr/testify v1.7.2
+	github.com/stretchr/testify v1.8.0
 )
 
 require (
