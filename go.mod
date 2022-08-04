@@ -1,6 +1,6 @@
 module github.com/cugu/gocap
 
-go 1.18
+go 1.19
 
 require (
 	github.com/alecthomas/kong v0.6.1
